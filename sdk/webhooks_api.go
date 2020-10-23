@@ -205,6 +205,26 @@ func (s *WebhooksService) GetWebhook(webhookID string) (*Webhook, *resty.Respons
 
 }
 
+// GetAttachmentAction Shows details for a webhoob, by ID.
+func (s *WebhooksService) GetAttachmentAction(webhookID string) (*AttachmentAction, *resty.Response, error) {
+
+	path := "/attachment/actions/{webhookId}"
+	path = strings.Replace(path, "{"+"webhookId"+"}", fmt.Sprintf("%v", webhookID), -1)
+
+	response, err := RestyClient.R().
+		SetResult(&AttachmentAction{}).
+		SetError(&Error{}).
+		Get(path)
+
+	if err != nil {
+		return nil, nil, err
+	}
+
+	result := response.Result().(*AttachmentAction)
+	return result, response, err
+
+}
+
 // ListWebhooksQueryParams are the query params for the ListWebhooks API Call
 type ListWebhooksQueryParams struct {
 	Max      int  `url:"max,omitempty"` // Limit the maximum number of items in the response.
