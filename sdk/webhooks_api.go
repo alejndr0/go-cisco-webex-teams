@@ -31,6 +31,17 @@ type WebhookUpdateRequest struct {
 	Status    string `json:"status,omitempty"`    // Webhook status.
 }
 
+// AttachmentAction is the AttachmentAction definition
+type AttachmentAction struct {
+	ID        string `json:"id"`
+	Type      string `json:"type"`
+	MessageID string `json:"messageId"`
+	Inputs    map[string]interface{} `json:"inputs"`
+	PersonID string    `json:"personId"`
+	RoomID   string    `json:"roomId"`
+	Created  time.Time `json:"created"`
+}
+
 // Webhook is the Webhook definition
 type Webhook struct {
 	ID        string    `json:"id,omitempty"`        // Webhook ID.
