@@ -57,6 +57,13 @@ type Webhook struct {
 	Status    string    `json:"status,omitempty"`    // Webhook status.
 	Secret    string    `json:"secret,omitempty"`    // Webhook secret.
 	Created   time.Time `json:"created,omitempty"`   // Webhook creation date/time.
+	Data      struct {
+		ID          string    `json:"id"`
+		RoomID      string    `json:"roomId"`
+		PersonID    string    `json:"personId"`
+		PersonEmail string    `json:"personEmail"`
+		Created     time.Time `json:"created"`
+	} `json:"data"`
 }
 
 // WebhookRequestData is the Webhook trigger request
